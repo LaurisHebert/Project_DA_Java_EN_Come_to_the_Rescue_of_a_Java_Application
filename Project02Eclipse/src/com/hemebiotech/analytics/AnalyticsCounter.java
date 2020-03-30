@@ -17,7 +17,7 @@ public class AnalyticsCounter {
     public AnalyticsCounter (ISymptomReader symptoms, ICollect collect, IWriter writer) {this.symptoms = symptoms; this.collect = collect; this.writer = writer;}
 
     public void run () throws WriterException, CollectException, ReadSymptomException {
-        writer.writer(collect.getMap(symptoms.GetSymptoms()));
+        writer.write(collect.collectMap(symptoms.getSymptoms()));
     }
 
 }

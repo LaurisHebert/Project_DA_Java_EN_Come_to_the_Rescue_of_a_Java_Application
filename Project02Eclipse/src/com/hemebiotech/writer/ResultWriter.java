@@ -7,17 +7,17 @@ public class ResultWriter implements IWriter {
 
     private String filepath;
 
-    /**This class will write the result on the console
+    /**
+     *
      * @param filepath a full or partial path to file where symptom will be written
      *
      */
     public ResultWriter(String filepath) { this.filepath = filepath; }
-
-    public void writer(Map<String, Long> myMap) throws WriterException {
+    @Override
+    public void write(Map<String, Long> collectedMap) throws WriterException {
         // try with resource
-        try (
-                FileWriter writer = new FileWriter(filepath)) {
-            for (Map.Entry<String, Long> mapEntry : myMap.entrySet()) {
+        try (FileWriter writer = new FileWriter(filepath)) {
+            for (Map.Entry<String, Long> mapEntry : collectedMap.entrySet()) {
                 writer.write(String.join("=", mapEntry.getKey(), mapEntry.getValue().toString()));
                 writer.write("\n");
             }

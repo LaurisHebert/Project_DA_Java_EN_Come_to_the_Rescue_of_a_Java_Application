@@ -4,13 +4,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Receive the data read by ISymptomReader, count and sort fot return a
- * collected data in Map
+ *
+ * Receive a list of strings from ISymptomReader to count and sort them alphabetically
  */
 
 public interface ICollect {
 	/**
-	 * @param symptomsList is the data read by ISymptomReader
+	 *
+	 * @param symptomsList contain a list of string who need to be sorted
+	 * @return the sorted list in map
+	 * @throws CollectException
 	 */
-	Map<String, Long> getMap(List<String> symptomsList) throws CollectException;
+	Map<String, Long> collectMap(List<String> symptomsList) throws CollectException;
 }

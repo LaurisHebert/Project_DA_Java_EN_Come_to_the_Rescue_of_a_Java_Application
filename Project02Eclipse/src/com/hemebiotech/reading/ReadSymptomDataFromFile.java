@@ -11,45 +11,37 @@ import java.util.List;
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
-    private String filepath;
+	private String filepath;
 
-    /**
-     * @param filepath a full or partial path to file with symptom strings in it, one per line
-     */
-    public ReadSymptomDataFromFile(String filepath) {
-        this.filepath = filepath;
-    }
+	/**
+	 *
+	 * @param filepath a full or partial path to file with symptom strings in it, one per line
+	 */
+	public ReadSymptomDataFromFile(String filepath) {
+		this.filepath = filepath;
+	}
 
-
-    @Override
-    /**
-     * @param result who receive the data from the file
-     * @return the content of each line of the filepath in an String value and add
-     *         in the arraylist "result"
-     * @throws IOException
-     * @throws ReadSymptomException
-     */
-    public List<String> GetSymptoms() throws ReadSymptomException {
-        ArrayList<String> result = new ArrayList<String>();
-        try {
-            if (filepath != null) {
-                try {
-                    BufferedReader reader = new BufferedReader(new FileReader(filepath));
-                    String line = reader.readLine();
-
-                    while (line != null) {
-                        result.add(line);
-                        line = reader.readLine();
-                    }
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (Exception e) {
-            throw new ReadSymptomException("File \"" + filepath + "\" doesn't exist", e);
-        }
-        return result;
-    }
-
+	@Override
+	/**
+	 *
+	 * @param result who receive the data from the file
+	 * @return the content of each line of the filepath in an String value and add
+	 *         in the arraylist "result"
+	 * @throws ReadSymptomException
+	 */
+	public List<String> getSymptoms() throws ReadSymptomException {
+		ArrayList<String> result = new ArrayList<String>();
+		if (filepath != null) {
+			try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
+				String line = reader.readLine();
+				while (line != null) {
+					result.add(line);
+					line = reader.readLine();
+				}
+			} catch (Exception e) {
+				throw new ReadSymptomException("File \"" + filepath + "\" doesn't exist or can not be read", e);
+			}
+		}
+		return result;
+	}
 }

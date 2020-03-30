@@ -6,5 +6,10 @@ import java.util.Map;
  *
  */
 public interface IWriter {
-    void writer(Map<String, Long> myMap) throws WriterException;
+    /**
+     *
+     * @param collectedMap contain a list of words and our occurrences
+     * @throws WriterException
+     */
+    void write(Map<String, Long> collectedMap) throws WriterException;
 }
