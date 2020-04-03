@@ -7,12 +7,6 @@ import java.util.TreeMap;
 public class Collect implements ICollect {
 
 	@Override
-	/**
-	 *
-	 * @param collectedMap who receive the data from a list of string
-	 * @return the list of string sorted by alphabetical in a Map
-	 * @throws CollectException
-	 */
 	public Map<String, Long> collectMap(List<String> symptomsList) throws CollectException {
 		Map<String, Long> collectedMap = new TreeMap<String, Long>();
 		try {

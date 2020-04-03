@@ -4,16 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- * Receive a list of strings from ISymptomReader to count and sort them alphabetically
+ * Count the number of occurence in a list symptoms. The result may be sorted
  */
 
 public interface ICollect {
 	/**
 	 *
-	 * @param symptomsList contain a list of string who need to be sorted
-	 * @return the sorted list in map
-	 * @throws CollectException
+	 * @param symptomsList => the list of symptom that may contains duplicate
+	 * @return The collected count by symptom  that may be sorted
+	 * @throws CollectException if an error occurs during the collect
 	 */
 	Map<String, Long> collectMap(List<String> symptomsList) throws CollectException;
 }

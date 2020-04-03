@@ -8,8 +8,8 @@ import java.util.Map;
 public interface IWriter {
     /**
      *
-     * @param collectedMap contain a list of words and our occurrences
-     * @throws WriterException
+     * @param collectedMap the count by symptom to write
+     * @throws WriterException if an error occurs during the writing of the symptoms
      */
     void write(Map<String, Long> collectedMap) throws WriterException;
 }

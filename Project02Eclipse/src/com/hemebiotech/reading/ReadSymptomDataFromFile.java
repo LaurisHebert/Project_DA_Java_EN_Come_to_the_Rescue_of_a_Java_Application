@@ -22,13 +22,6 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	}
 
 	@Override
-	/**
-	 *
-	 * @param result who receive the data from the file
-	 * @return the content of each line of the filepath in an String value and add
-	 *         in the arraylist "result"
-	 * @throws ReadSymptomException
-	 */
 	public List<String> getSymptoms() throws ReadSymptomException {
 		ArrayList<String> result = new ArrayList<String>();
 		if (filepath != null) {
